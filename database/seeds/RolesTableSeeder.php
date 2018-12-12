@@ -26,7 +26,7 @@ class RolesTableSeeder extends Seeder
         $role->givePermissionTo($permission);
         $permission = Permission::findById(2);
         $role->givePermissionTo($permission);
-        $permission = Permission::findById(2);
+        $permission = Permission::findById(4);
         $role->givePermissionTo($permission);
 
         $role = Role::findById(3);
