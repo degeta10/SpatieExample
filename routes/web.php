@@ -17,4 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home/index', 'HomeController@index')->name('home');
+    Route::get('/posts/index', 'PostController@index')->name('posts.index');
+    Route::get('/posts/create', 'PostController@create')->name('posts.create');
+    Route::post('/posts/store', 'PostController@store')->name('posts.store');
+    Route::get('/posts/edit/{id}', 'PostController@edit')->name('posts.edit');
+    Route::post('/posts/update/{id}', 'PostController@update')->name('posts.update');
+    Route::delete('/posts/delete/{id}', 'PostController@delete')->name('posts.delete');
+
+});
