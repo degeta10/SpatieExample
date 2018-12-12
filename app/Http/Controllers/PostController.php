@@ -34,10 +34,10 @@ class PostController extends Controller
                 'body' => 'required|max:255',
             ]);
 
-            $post = Post::create([
+            $post = Post::insert([
                 'title' => $request->input('title'),
                 'body' => $request->input('body'),
-                'form_date' => Carbon::now(),
+                'created_at' => Carbon::now(),
             ]);
 
             if($post){
@@ -48,10 +48,11 @@ class PostController extends Controller
         return back()->withInput()->with('errors', 'Post failed !');
     }
 
-    public function edit()
+    public function edit($id)
     {
         if ( Auth::check() ) {
-            return view('posts.edit');
+            $post = Post::where('id',$id)->first();
+            return view('posts.edit',compact('post'));
         } 
     }
 
@@ -64,10 +65,10 @@ class PostController extends Controller
                 'body' => 'required|max:255',
             ]);
 
-            $post = Post::where('id',$id)->create([
+            $post = Post::where('id',$id)->update([
                 'title' => $request->input('title'),
                 'body' => $request->input('body'),
-                'form_date' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
 
             if($post){

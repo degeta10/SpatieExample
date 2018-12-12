@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -56,8 +57,14 @@ class HomeController extends Controller
         // return $permissions;
 
         //  Check if user has role
-        return User::role('admin')->get();
+        // return User::role('admin')->get();
 
-        // return view('home');
+        $role = Role::where('name',Auth::user()->user_type)->get();
+        auth()->user()->assignRole($role);
+        $permissions = auth()->user()->getPermissionsViaRoles();
+        foreach ($permissions as $permission) {
+            auth()->user()->givePermissionTo($permissions);
+        }
+        return view('home');
     }
 }
