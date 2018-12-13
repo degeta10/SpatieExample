@@ -28,5 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/posts/edit/{id}', 'PostController@edit')->name('posts.edit')->middleware('permission:update posts');
     Route::put('/posts/update/{id}', 'PostController@update')->name('posts.update')->middleware('permission:update posts');
     Route::delete('/posts/delete/{id}', 'PostController@delete')->name('posts.delete')->middleware('permission:delete posts');
-
+    Route::get('403',['as'=>'403','uses'=>'ErrorHandlerController@errorCode403']);
+    Route::get('404',['as'=>'404','uses'=>'ErrorHandlerController@errorCode404']);
+    Route::get('405',['as'=>'405','uses'=>'ErrorHandlerController@errorCode405']);
 });
