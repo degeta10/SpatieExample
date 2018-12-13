@@ -15,7 +15,8 @@ class RolesTableSeeder extends Seeder
     {
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'manager']);
-        Role::create(['name' => 'user']);
+        Role::create(['name' => 'accounts']);
+        Role::create(['name' => 'cashier']);
 
         $role = Role::findById(1);
         $permission = Permission::all();

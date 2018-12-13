@@ -16,26 +16,34 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Degeta10',
-            'email' => 'degeta10@gmail.com',
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('qwe123'),
             'user_type' => 'admin',
             'created_at'=>Carbon::now(),            
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Lano',
-            'email' => 'lano10crazy@gmail.com',
+            'name' => 'Manager',
+            'email' => 'manager@gmail.com',
             'password' => Hash::make('qwe123'),
             'user_type' => 'manager',
             'created_at'=>Carbon::now(),            
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Angel',
-            'email' => 'angel@gmail.com',
+            'name' => 'Accounts',
+            'email' => 'accounts@gmail.com',
             'password' => Hash::make('qwe123'),
-            'user_type' => 'user',
+            'user_type' => 'accounts',
+            'created_at'=>Carbon::now(),            
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Cashier',
+            'email' => 'cashier@gmail.com',
+            'password' => Hash::make('qwe123'),
+            'user_type' => 'cashier',
             'created_at'=>Carbon::now(),            
         ]);
     }
